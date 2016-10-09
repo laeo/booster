@@ -1,0 +1,17 @@
+version: "2"
+services:
+  web:
+    build: "web"
+    volumes:
+      - "..:/www"
+    ports:
+      - "8080:80"
+    links:
+      - db
+  db:
+    build: "mysql"
+    volumes:
+      - "./mysql/data:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "app"
