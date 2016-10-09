@@ -8,6 +8,7 @@ services:
       - "8080:80"
     links:
       - db
+      - redis
   db:
     build: "mysql"
     volumes:
@@ -15,3 +16,5 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_DATABASE: "app"
+  redis:
+    build: "redis"
