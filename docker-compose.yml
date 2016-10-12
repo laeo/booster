@@ -4,6 +4,7 @@ services:
     build: "web"
     volumes:
       - "..:/www"
+      - "./web/logs:/var/log/web"
     ports:
       - "8080:80"
     links:
