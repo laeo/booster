@@ -25,9 +25,9 @@ if [ ! -d "${DATADIR}mysql" ]; then
     /usr/bin/mysql -uroot <<EOF
 DELETE FROM mysql.user;
 CREATE USER 'root' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
-DROP DATABASE IF EXISTS test;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
+DROP DATABASE IF EXISTS test;
 EOF
 
     if [ ! -z "$MYSQL_DATABASE" ]; then
