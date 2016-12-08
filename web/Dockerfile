@@ -14,8 +14,6 @@ RUN apk -f add nginx
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 RUN mkdir -p /www/public && chmod -R 0755 /www
 
-VOLUME /www /var/log/web
-
 WORKDIR /www
 
 EXPOSE 80

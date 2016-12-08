@@ -17,5 +17,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_DATABASE: "app"
+    ports:
+      - "3306:3306"
   redis:
     build: "redis"
+    ports:
+      - "6379:6379"

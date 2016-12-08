@@ -6,7 +6,7 @@ if [ ! -d "${DATADIR}mysql" ]; then
     /usr/bin/mysql_install_db
     /usr/bin/mysqld --user=root &
     PID=$!
-    echo -e "PID: $PID"
+    echo -e "PID: $PID\n"
 
     # waiting for mysqld online
     pong='1'
@@ -24,8 +24,8 @@ if [ ! -d "${DATADIR}mysql" ]; then
 
     /usr/bin/mysql -uroot <<EOF
 DELETE FROM mysql.user;
-CREATE USER 'root'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
-GRANT ALL ON *.* TO 'root'@'%' WITH GRANT OPTION;
+CREATE USER 'root' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
 DROP DATABASE IF EXISTS test;
 FLUSH PRIVILEGES;
 EOF
@@ -35,16 +35,16 @@ EOF
     fi
 
     kill -s TERM $PID
-fi
 
-# waiting for mysqld offline
-pong='0'
-while [ $pong -eq '0' ]; do
-    echo -e "waiting for mysqld offline...\n"
-    /usr/bin/mysqladmin -uroot --password='' ping
-    pong=$?
-    sleep 1s
-done
+    # waiting for mysqld offline
+    pong='0'
+    while [ $pong -eq '0' ]; do
+        echo -e "waiting for mysqld offline...\n"
+        /usr/bin/mysqladmin -uroot --password='' ping
+        pong=$?
+        sleep 1s
+    done
+fi
 
 echo -e "starting db service...\n"
 /usr/bin/mysqld --user=root
