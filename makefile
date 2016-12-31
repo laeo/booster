@@ -1,6 +1,9 @@
 include app.env
 init: app.env
-	@echo "PLEASE NOTE THAT MODIFY YOUR app.env FILE!"
+	@echo "***PLEASE NOTE THAT MODIFY YOUR app.env FILE***"
+	@echo "try to stop existed container..."
+	@docker-compose stop
+	@docker-compose -p ${APP_NAME} stop
 	@echo "initializing docker-compose.yml file..."
 	@echo 'version: "2"' > docker-compose.yml
 	@echo 'services:' >> docker-compose.yml
@@ -31,7 +34,10 @@ init: app.env
 	@echo "NOTE: now you can use \"make install\" to up your service!"
 
 install: app.env
-	docker-compose build
+	@docker-compose -p ${APP_NAME} build
 
 start: app.env
-	docker-compose up -d -p ${APP_NAME}
+	@docker-compose -p ${APP_NAME} up -d
+
+stop: app.env
+	@docker-compose -p ${APP_NAME} stop
