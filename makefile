@@ -1,6 +1,6 @@
 include app.env
 init: app.env
-	@echo "***PLEASE NOTE THAT MODIFY YOUR app.env FILE***"
+	@echo "***PLEASE NOTE THAT EDIT YOUR app.env FILE***"
 	@echo "try to stop existed container..."
 	@docker-compose stop
 	@docker-compose -p ${APP_NAME} stop
