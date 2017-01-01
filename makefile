@@ -2,9 +2,12 @@ include app.env
 .PHONY: init install start stop enter deploy db.migrate db.refresh db.seed
 init: app.env
 	@echo "***PLEASE NOTE THAT EDIT YOUR app.env FILE***"
+
+ifneq ("$(wildcard docker-compose.yml)","")
 	@echo "try to stop existed container..."
-	@docker-compose stop
 	@docker-compose -p $(APP_NAME) stop
+endif
+
 	@echo "initializing docker-compose.yml file..."
 	@echo 'version: "2"' > docker-compose.yml
 	@echo 'services:' >> docker-compose.yml
