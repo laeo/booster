@@ -31,7 +31,9 @@ make start # run any booster services
 make stop  # stop booster services
 make deploy # auto-deployment: composer install, cp .env, update .env, key:generate
 make enter # enter web service container
-make 
+make db.migrate # run artisan migrate command
+make db.refresh # run artisan migrate:refresh command
+make db.seed #run artisan db:seed command
 ```
 
 Now open `http://127.0.0.1:8080` to see if normal access, please ensure the `booster` is in the Laravel project. And the MySQL root password is `root`, it can be configured in `docker-compose.yml`.
