@@ -79,10 +79,10 @@ deploy: app.env
 	@echo '***PLEASE NOTE THAT EDIT YOUR config/database.php AND CHANGE THE redis SECTION***'
 
 db.migrate: app.env
-	@docker-compose -p $(APP_NAME) exec web php artisan migrate
+	-@docker-compose -p $(APP_NAME) exec web php artisan migrate
 
 db.refresh: app.env
-	@docker-compose -p $(APP_NAME) exec web php artisan migrate:refresh
+	-@docker-compose -p $(APP_NAME) exec web php artisan migrate:refresh
 
 db.seed: app.env
-	@docker-compose -p $(APP_NAME) exec web php artisan db:seed
+	-@docker-compose -p $(APP_NAME) exec web php artisan db:seed
