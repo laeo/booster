@@ -1,42 +1,35 @@
 # Booster
-
 Yet another dockerized develop environment for Laravel developers.
 
-# Requirements
-
-- make
-- docker
-- docker-compose
-- internet-connection
-
-# Environment
-
-- Alpine    [3.4]
-- PHP       [5.6.25]
-- NginX     [1.10.1]
-- MariaDB   [10.1.17]
-- Redis     [3.2.0]
-
 # Usage
-
 ```bash
 # first you should install [make](https://www.gnu.org/software/make/)
 cd my-laravel-app
-git clone https://github.com/doubear/booster.git
-cd booster
-# edit app.env
-make
-make install
-make start # run any booster services
-make stop  # stop booster services
-make deploy # auto-deployment: composer install, cp .env, update .env, key:generate
-make enter # enter web service container
-make db.migrate # run artisan migrate command
-make db.refresh # run artisan migrate:refresh command
-make db.seed #run artisan db:seed command
+wget https://raw.githubusercontent.com/doubear/booster/master/docker-compose.yml
+docker-compose up -d
 ```
 
-Now open `http://127.0.0.1:8080` to see if normal access, please ensure the `booster` is in the Laravel project. And the MySQL root password is `root`, it can be configured in `docker-compose.yml`.
+Now open `http://127.0.0.1:8080` to view your website.
+
+#Configuration
+You can easily configure the MySQL in your `.env` file.
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=app
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
+The Redis service is included by default, you can also configure it in your `.env` file.
+
+```bash
+REDIS_HOST=redis
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+```
 
 # License
 
