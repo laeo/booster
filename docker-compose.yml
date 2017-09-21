@@ -2,10 +2,11 @@ version: "2"
 services:
   web:
     image: webstack/php
+    command: php artisan serve --host="0.0.0.0"
     volumes:
       - .:/home
     ports:
-      - 8080:80
+      - 8000:8000
     links:
       - db
       - redis
@@ -14,7 +15,5 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_DATABASE: "app"
-    ports:
-      - "127.0.0.1:3306:3306"
   redis:
     image: redis
