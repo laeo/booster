@@ -1,3 +1,0 @@
-mysql/data
-web/logs/
-!web/logs/.gitkeep
