@@ -9,7 +9,7 @@ wget https://raw.githubusercontent.com/doubear/booster/master/docker-compose.yml
 docker-compose up -d
 ```
 
-Now open `http://127.0.0.1:8080` to view your website.
+Now open `http://127.0.0.1:8000` to view your website.
 
 #Configuration
 You can easily configure the MySQL in your `.env` file.
