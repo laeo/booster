@@ -4,6 +4,7 @@ Yet another dockerized develop environment for Laravel developers.
 
 # Requirements
 
+- make
 - docker
 - docker-compose
 - internet-connection
@@ -19,11 +20,20 @@ Yet another dockerized develop environment for Laravel developers.
 # Usage
 
 ```bash
+# first you should install [make](https://www.gnu.org/software/make/)
 cd my-laravel-app
 git clone https://github.com/doubear/booster.git
 cd booster
-docker-compose build
-docker-compose up -d
+# edit app.env
+make
+make install
+make start # run any booster services
+make stop  # stop booster services
+make deploy # auto-deployment: composer install, cp .env, update .env, key:generate
+make enter # enter web service container
+make db.migrate # run artisan migrate command
+make db.refresh # run artisan migrate:refresh command
+make db.seed #run artisan db:seed command
 ```
 
 Now open `http://127.0.0.1:8080` to see if normal access, please ensure the `booster` is in the Laravel project. And the MySQL root password is `root`, it can be configured in `docker-compose.yml`.
