@@ -5,7 +5,7 @@ Yet another dockerized develop environment for Laravel developers.
 ```bash
 # first you should install [make](https://www.gnu.org/software/make/)
 cd my-laravel-app
-wget https://raw.githubusercontent.com/doubear/booster/master/docker-compose.yml
+wget https://raw.githubusercontent.com/laeo/booster/master/docker-compose.yml
 docker-compose up -d
 ```
 
@@ -33,4 +33,4 @@ REDIS_PORT=6379
 
 # License
 
-Based on MIT license. Thanks Google Translate.
+Under MIT license. Thanks Google Translate.
